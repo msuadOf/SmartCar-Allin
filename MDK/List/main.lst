@@ -1,0 +1,78 @@
+C251 COMPILER V5.60.0,  main                                                               13/05/23  16:06:42  PAGE 1   
+
+
+C251 COMPILER V5.60.0, COMPILATION OF MODULE main
+OBJECT MODULE PLACED IN .\MDK\Obj\main.obj
+COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE CORE\Src\main.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\Driver\I
+                    -nc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\main.lst) TABS(2) OBJECT(.\MDK\Obj\main.obj) 
+
+stmt  level    source
+
+    1          #include "config.h"
+    2          #include "STC32G_GPIO.h"
+    3          #include "STC32G_Delay.h"
+    4          
+    5          #include "MPU6500.h"
+    6          #include "bsp.h"
+    7          
+    8          void GPIO_config(void)
+    9          {
+   10   1        // P4_MODE_IO_PU(GPIO_Pin_0);     //P4.0设置为准双向口
+   11   1        P2_MODE_IO_PU(GPIO_Pin_All); // P2 设置为准双向口
+   12   1      }
+   13          float gyro_buffer[3], acc_buffer[3];
+   14          void main(void)
+   15          {
+   16   1        WTST = 0;  // 设置程序指令延时参数，赋值为0可将CPU执行指令的速度设置为最快
+   17   1        EAXSFR();  // 扩展SFR(XFR)访问使能
+   18   1        CKCON = 0; // 提高访问XRAM速度
+   19   1      
+   20   1        GPIO_config();
+   21   1        P20 = 0; // 打开实验板LED电源
+   22   1      
+   23   1        MPU6500_Init();
+   24   1        bsp_uart_init();
+   25   1      
+   26   1        EA = 1;
+   27   1      
+   28   1        while (1)
+   29   1        {
+   30   2          u8 buf = 0x5a;
+   31   2      
+   32   2          //bsp_spi_write(0xA5, &buf, 1);
+   33   2          /* 获取陀螺仪和加速度计数据 */
+   34   2          MPU6500_get_buffer(gyro_buffer, acc_buffer);
+   35   2      
+   36   2          /* 打印数据 */
+   37   2          printf("Gyro:%.2f,%.2f,%.2f\n", gyro_buffer[0], gyro_buffer[1], gyro_buffer[2], acc_buffer[0], acc_buff
+             -er[1], acc_buffer[2]);
+   38   2      
+   39   2          delay_ms(250);
+   40   2        }
+   41   1      }
+
+
+Module Information          Static   Overlayable
+------------------------------------------------
+  code size            =       108     ------
+  ecode size           =    ------     ------
+  data size            =    ------     ------
+  idata size           =    ------     ------
+  pdata size           =    ------     ------
+  xdata size           =    ------     ------
+  xdata-const size     =    ------     ------
+  edata size           =        24     ------
+  bit size             =    ------     ------
+  ebit size            =    ------     ------
+  bitaddressable size  =    ------     ------
+  ebitaddressable size =    ------     ------
+  far data size        =    ------     ------
+C251 COMPILER V5.60.0,  main                                                               13/05/23  16:06:42  PAGE 2   
+
+  huge data size       =    ------     ------
+  const size           =    ------     ------
+  hconst size          =        21     ------
+End of Module Information.
+
+
+C251 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

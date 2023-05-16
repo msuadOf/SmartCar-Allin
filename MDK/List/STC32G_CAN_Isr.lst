@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_CAN_Isr                                                     13/05/23  15:57:25  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_CAN_Isr                                                     15/05/23  11:30:09  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_CAN_Isr
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_CAN_Isr.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Isr\STC32G_CAN_Isr.c XSMALL INTR2 BROWSE INCDIR(.\Drive
-                    -r;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_CAN_Isr.lst) TABS(2) OBJECT(.\MDK\Ob
-                    -j\STC32G_CAN_Isr.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Isr\STC32G_CAN_Isr.c XSMALL INTR2 BROWSE INCDIR(.\Driv
+                    -er;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_CAN_Isr.lst) TABS(2) OBJECT(.\MDK\O
+                    -bj\STC32G_CAN_Isr.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    55   2          CANAR = ISR;
    56   2          CANDR = 0x10;    //CLR FLAG
    57   2        } 
-C251 COMPILER V5.60.0,  STC32G_CAN_Isr                                                     13/05/23  15:57:25  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_CAN_Isr                                                     15/05/23  11:30:09  PAGE 2   
 
    58   1      
    59   1        if((isr & 0x02) == 0x02)  //BEI
@@ -134,7 +134,7 @@ stmt  level    source
   121   1      
   122   1        if((isr & 0x10) == 0x10)  //EPI
   123   1        {
-C251 COMPILER V5.60.0,  STC32G_CAN_Isr                                                     13/05/23  15:57:25  PAGE 3   
+C251 COMPILER V5.60.0,  STC32G_CAN_Isr                                                     15/05/23  11:30:09  PAGE 3   
 
   124   2          CANAR = ISR;
   125   2          CANDR = 0x10;    //CLR FLAG

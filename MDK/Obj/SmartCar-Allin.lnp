@@ -38,7 +38,8 @@
 ".\MDK\Obj\STC32G_Timer_Isr.obj",
 ".\MDK\Obj\STC32G_UART_Isr.obj",
 ".\MDK\Obj\bsp_spi_mpu6500.obj",
-".\MDK\Obj\bsp_uart.obj" 
+".\MDK\Obj\bsp_uart.obj",
+".\MDK\Obj\bsp_tim_counter.obj" 
 TO ".\MDK\Obj\SmartCar-Allin" 
 PRINT(".\MDK\List\SmartCar-Allin.map") CASE DISABLEWARNING (16,57) 
 CLASSES (EDATA (0x0-0xFFF), 

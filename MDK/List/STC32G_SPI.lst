@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_SPI                                                         13/05/23  15:57:24  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_SPI                                                         15/05/23  11:30:08  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_SPI
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_SPI.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_SPI.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\
-                    -Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_SPI.lst) TABS(2) OBJECT(.\MDK\Obj\STC32G
-                    -_SPI.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_SPI.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.
+                    -\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_SPI.lst) TABS(2) OBJECT(.\MDK\Obj\STC32
+                    -G_SPI.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    55   2        }
    56   1        else
    57   1        {
-C251 COMPILER V5.60.0,  STC32G_SPI                                                         13/05/23  15:57:24  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_SPI                                                         15/05/23  11:30:08  PAGE 2   
 
    58   2          MSTR = 1;   //使能 SPI 主机模式
    59   2          SSIG = 1;   //忽略SS引脚功能

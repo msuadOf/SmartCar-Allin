@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_Exti_Isr                                                    13/05/23  15:57:25  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_Exti_Isr                                                    15/05/23  11:30:09  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_Exti_Isr
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_Exti_Isr.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Isr\STC32G_Exti_Isr.c XSMALL INTR2 BROWSE INCDIR(.\Driv
-                    -er;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_Exti_Isr.lst) TABS(2) OBJECT(.\MDK\
-                    -Obj\STC32G_Exti_Isr.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Isr\STC32G_Exti_Isr.c XSMALL INTR2 BROWSE INCDIR(.\Dri
+                    -ver;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_Exti_Isr.lst) TABS(2) OBJECT(.\MDK
+                    -\Obj\STC32G_Exti_Isr.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    55          //========================================================================
    56          void INT2_ISR_Handler (void) interrupt INT2_VECTOR    //进中断时已经清除标志
    57          {
-C251 COMPILER V5.60.0,  STC32G_Exti_Isr                                                    13/05/23  15:57:25  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_Exti_Isr                                                    15/05/23  11:30:09  PAGE 2   
 
    58   1        // TODO: 在此处添加用户代码
    59   1      //  P02 = ~P02;

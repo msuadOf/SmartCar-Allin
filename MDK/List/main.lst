@@ -1,77 +1,143 @@
-C251 COMPILER V5.60.0,  main                                                               13/05/23  16:06:42  PAGE 1   
+C251 COMPILER V5.60.0,  main                                                               15/05/23  17:10:47  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE main
 OBJECT MODULE PLACED IN .\MDK\Obj\main.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE CORE\Src\main.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\Driver\I
-                    -nc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\main.lst) TABS(2) OBJECT(.\MDK\Obj\main.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE CORE\Src\main.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\Driver\
+                    -Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\main.lst) TABS(2) OBJECT(.\MDK\Obj\main.obj) 
 
 stmt  level    source
 
     1          #include "config.h"
     2          #include "STC32G_GPIO.h"
     3          #include "STC32G_Delay.h"
-    4          
-    5          #include "MPU6500.h"
-    6          #include "bsp.h"
+    4          #include  "STC32G_Timer.h"
+    5          #include  "STC32G_GPIO.h"
+    6          #include  "STC32G_NVIC.h"
     7          
-    8          void GPIO_config(void)
-    9          {
-   10   1        // P4_MODE_IO_PU(GPIO_Pin_0);     //P4.0设置为准双向口
-   11   1        P2_MODE_IO_PU(GPIO_Pin_All); // P2 设置为准双向口
-   12   1      }
-   13          float gyro_buffer[3], acc_buffer[3];
-   14          void main(void)
-   15          {
-   16   1        WTST = 0;  // 设置程序指令延时参数，赋值为0可将CPU执行指令的速度设置为最快
-   17   1        EAXSFR();  // 扩展SFR(XFR)访问使能
-   18   1        CKCON = 0; // 提高访问XRAM速度
-   19   1      
-   20   1        GPIO_config();
-   21   1        P20 = 0; // 打开实验板LED电源
-   22   1      
-   23   1        MPU6500_Init();
-   24   1        bsp_uart_init();
-   25   1      
-   26   1        EA = 1;
-   27   1      
-   28   1        while (1)
-   29   1        {
-   30   2          u8 buf = 0x5a;
-   31   2      
-   32   2          //bsp_spi_write(0xA5, &buf, 1);
-   33   2          /* 获取陀螺仪和加速度计数据 */
-   34   2          MPU6500_get_buffer(gyro_buffer, acc_buffer);
-   35   2      
-   36   2          /* 打印数据 */
-   37   2          printf("Gyro:%.2f,%.2f,%.2f\n", gyro_buffer[0], gyro_buffer[1], gyro_buffer[2], acc_buffer[0], acc_buff
-             -er[1], acc_buffer[2]);
-   38   2      
-   39   2          delay_ms(250);
-   40   2        }
-   41   1      }
+    8          #include "MPU6500.h"
+    9          #include "bsp.h"
+   10          
+   11          void GPIO_config(void)
+   12          {
+   13   1         P4_MODE_IO_PU(GPIO_Pin_All);     //P4.0设置为准双向口
+   14   1        P2_MODE_IO_PU(GPIO_Pin_All); // P2 设置为准双向口
+   15   1        //P4_MODE_IN_HIZ(GPIO_Pin_All);
+   16   1      }
+   17          /************************ 定时器配置 ****************************/
+   18          void  Timer_config(void)
+   19          {
+   20   1         TIM_InitTypeDef    TIM_InitStructure;            //结构定义
+   21   1        // TIM_InitStructure.TIM_Mode      = TIM_16BitAutoReload; //指定工作模式,   TIM_16BitAutoReload,TIM_16Bi
+             -t,TIM_8BitAutoReload,TIM_16BitAutoReloadNoMask
+   22   1        // TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_1T;    //指定时钟源,     TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_CLO
+             -CK_Ext
+   23   1        // TIM_InitStructure.TIM_ClkOut    = DISABLE;       //是否输出高速脉冲, ENABLE或DISABLE
+   24   1        // TIM_InitStructure.TIM_Value     = (u16)(65536UL - (MAIN_Fosc / 100000UL));   //初值,
+   25   1        // TIM_InitStructure.TIM_Run       = ENABLE;          //是否初始化后启动定时器, ENABLE或DISABLE
+   26   1        // Timer_Inilize(Timer0,&TIM_InitStructure);          //初始化Timer0    Timer0,Timer1,Timer2,Timer3,Timer4
+   27   1        // NVIC_Timer0_Init(ENABLE,Priority_0);   //中断使能, ENABLE/DISABLE; 优先级(低到高) Priority_0,Priority_
+             -1,Priority_2,Priority_3
+   28   1      
+   29   1        // TIM_InitStructure.TIM_Mode      = TIM_16BitAutoReload; //指定工作模式,   TIM_16BitAutoReload,TIM_16Bi
+             -t,TIM_8BitAutoReload,TIM_16BitAutoReloadNoMask
+   30   1        // TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_1T;    //指定时钟源, TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_CLOCK_E
+             -xt
+   31   1        // TIM_InitStructure.TIM_ClkOut    = DISABLE;       //是否输出高速脉冲, ENABLE或DISABLE
+   32   1        // TIM_InitStructure.TIM_Value     = (u16)(65536UL - (MAIN_Fosc / 10000));      //初值,
+   33   1        // TIM_InitStructure.TIM_Run       = ENABLE;          //是否初始化后启动定时器, ENABLE或DISABLE
+   34   1        // Timer_Inilize(Timer1,&TIM_InitStructure);          //初始化Timer1    Timer0,Timer1,Timer2,Timer3,Timer4
+   35   1        // NVIC_Timer1_Init(ENABLE,Priority_0);   //中断使能, ENABLE/DISABLE; 优先级(低到高) Priority_0,Priority_
+             -1,Priority_2,Priority_3
+   36   1      
+   37   1        // TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_1T;    //指定时钟源,     TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_CLO
+             -CK_Ext
+   38   1        // TIM_InitStructure.TIM_ClkOut    = DISABLE;       //是否输出高速脉冲, ENABLE或DISABLE
+   39   1        // TIM_InitStructure.TIM_Value     = (u16)(65536UL - (MAIN_Fosc / 1000));       //初值
+   40   1        // TIM_InitStructure.TIM_Run       = ENABLE;          //是否初始化后启动定时器, ENABLE或DISABLE
+   41   1        // Timer_Inilize(Timer2,&TIM_InitStructure);          //初始化Timer2    Timer0,Timer1,Timer2,Timer3,Timer4
+   42   1        // NVIC_Timer2_Init(ENABLE,NULL);   //中断使能, ENABLE/DISABLE; 无优先级
+   43   1      
+   44   1        // TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_12T; //指定时钟源,     TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_CLO
+             -CK_Ext
+   45   1        // TIM_InitStructure.TIM_ClkOut    = ENABLE;          //是否输出高速脉冲, ENABLE或DISABLE
+   46   1        // TIM_InitStructure.TIM_Value     = (u16)(65536UL - (MAIN_Fosc / (100*12)));   //初值
+   47   1        // TIM_InitStructure.TIM_Run       = ENABLE;          //是否初始化后启动定时器, ENABLE或DISABLE
+   48   1        // Timer_Inilize(Timer3,&TIM_InitStructure);          //初始化Timer3    Timer0,Timer1,Timer2,Timer3,Timer4
+   49   1        // NVIC_Timer3_Init(ENABLE,NULL);   //中断使能, ENABLE/DISABLE; 无优先级
+   50   1      
+C251 COMPILER V5.60.0,  main                                                               15/05/23  17:10:47  PAGE 2   
+
+   51   1        TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_12T;  //指定时钟源,     TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_CLOCK_
+             -Ext
+   52   1        TIM_InitStructure.TIM_ClkOut    = ENABLE;         //是否输出高速脉冲, ENABLE或DISABLE
+   53   1        TIM_InitStructure.TIM_Value     = (u16)(65536UL - (MAIN_Fosc / (200*12)));    //初值
+   54   1        TIM_InitStructure.TIM_Run       = ENABLE;         //是否初始化后启动定时器, ENABLE或DISABLE
+   55   1        Timer_Inilize(Timer4,&TIM_InitStructure);         //初始化Timer4    Timer0,Timer1,Timer2,Timer3,Timer4
+   56   1        NVIC_Timer4_Init(ENABLE,NULL);    //中断使能, ENABLE/DISABLE; 无优先级
+   57   1      }
+   58          float gyro_buffer[3], acc_buffer[3];
+   59          int cnt=0;
+   60          void Timer_ISR_Callback(int Timx){
+   61   1        if(Timx==Timer4){
+   62   2          cnt=bsp_timer_count_read(CTIM3_P04);
+   63   2          bsp_timer_count_clean(CTIM3_P04);
+   64   2        }
+   65   1      }
+   66          void main(void)
+   67          {
+   68   1        WTST = 0;  // 设置程序指令延时参数，赋值为0可将CPU执行指令的速度设置为最快
+   69   1        EAXSFR();  // 扩展SFR(XFR)访问使能
+   70   1        CKCON = 0; // 提高访问XRAM速度
+   71   1      
+   72   1        GPIO_config();
+   73   1        Timer_config();
+   74   1        P20 = 0; // 打开实验板LED电源
+   75   1      
+   76   1        MPU6500_Init();
+   77   1        bsp_uart_init();
+   78   1      
+   79   1        bsp_timer_count_init(CTIM3_P04);
+   80   1        EA = 1;
+   81   1      P45=0;
+   82   1        while (1)
+   83   1        {
+   84   2          u8 buf = 0x5a;
+   85   2      
+   86   2          //bsp_spi_write(0xA5, &buf, 1);
+   87   2          /* 获取陀螺仪和加速度计数据 */
+   88   2          //MPU6500_get_buffer(gyro_buffer, acc_buffer);
+   89   2      
+   90   2          /* 打印数据 */
+   91   2          GPIO_TogglePin(P45);
+   92   2          //putchar('A');
+   93   2          printf("cnt:%d\n", cnt);
+   94   2      
+   95   2          delay_ms(250);
+   96   2        }
+   97   1      }
 
 
 Module Information          Static   Overlayable
 ------------------------------------------------
-  code size            =       108     ------
+  code size            =       148     ------
   ecode size           =    ------     ------
   data size            =    ------     ------
   idata size           =    ------     ------
   pdata size           =    ------     ------
   xdata size           =    ------     ------
   xdata-const size     =    ------     ------
-  edata size           =        24     ------
+  edata size           =        26          6
   bit size             =    ------     ------
   ebit size            =    ------     ------
   bitaddressable size  =    ------     ------
   ebitaddressable size =    ------     ------
   far data size        =    ------     ------
-C251 COMPILER V5.60.0,  main                                                               13/05/23  16:06:42  PAGE 2   
-
   huge data size       =    ------     ------
   const size           =    ------     ------
-  hconst size          =        21     ------
+C251 COMPILER V5.60.0,  main                                                               15/05/23  17:10:47  PAGE 3   
+
+  hconst size          =        14     ------
 End of Module Information.
 
 

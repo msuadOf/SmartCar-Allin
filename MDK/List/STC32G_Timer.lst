@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_Timer                                                       13/05/23  15:57:24  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_Timer                                                       15/05/23  11:30:08  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_Timer
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_Timer.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_Timer.c XSMALL INTR2 BROWSE INCDIR(.\Driver;
-                    -.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_Timer.lst) TABS(2) OBJECT(.\MDK\Obj\ST
-                    -C32G_Timer.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_Timer.c XSMALL INTR2 BROWSE INCDIR(.\Driver
+                    -;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_Timer.lst) TABS(2) OBJECT(.\MDK\Obj\S
+                    -TC32G_Timer.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    53   2          Timer2_CLK_Select(TIMx->TIM_ClkSource); //对外计数或分频, 定时12T/1T
    54   2          Timer2_CLK_Output(TIMx->TIM_ClkOut);    //输出时钟使能
    55   2      
-C251 COMPILER V5.60.0,  STC32G_Timer                                                       13/05/23  15:57:24  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_Timer                                                       15/05/23  11:30:08  PAGE 2   
 
    56   2          T2_Load(TIMx->TIM_Value);
    57   2          Timer2_Run(TIMx->TIM_Run);

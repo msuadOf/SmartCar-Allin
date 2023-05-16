@@ -1,0 +1,278 @@
+C251 COMPILER V5.60.0,  bsp_tim_counter                                                    15/05/23  16:30:08  PAGE 1   
+
+
+C251 COMPILER V5.60.0, COMPILATION OF MODULE bsp_tim_counter
+OBJECT MODULE PLACED IN .\MDK\Obj\bsp_tim_counter.obj
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE bsp\bsp_tim_counter.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\D
+                    -river\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\bsp_tim_counter.lst) TABS(2) OBJECT(.\MDK\Obj\bs
+                    -p_tim_counter.obj) 
+
+stmt  level    source
+
+    1          #include "bsp.h"
+    2          #include "config.h"
+    3          #include "stc32g.h"
+    4          
+    5          /**
+    6           * @brief 注意：
+    7           *      本文件所有函数copy自逐飞BLDC开源库，用来给编码器使用
+    8           *      例程查找逐飞库car_ctrl的文件相关
+    9           * 
+   10           */
+   11          
+   12          //-------------------------------------------------------------------------------------------------------
+             -------------
+   13          //  @brief      定时器初始化作为外部计数
+   14          //  @param      tim_n           选择模块
+   15          //  @return     void
+   16          //  @since      v1.0
+   17          //  Sample usage:               bsp_timer_count_init(CTIM0_P34);    //初始化定时器0，外部输入为P3.4引脚
+   18          //  @note                       串口1使用定时器1作为波特率发生器，
+   19          //                串口2使用定时器2作为波特率发生器，
+   20          //                串口3使用定时器3作为波特率发生器，
+   21          //                串口4使用定时器4作为波特率发生器，
+   22          //                              STC16F仅有定时器0-定时器4，这5个定时器。
+   23          //                编码器采集数据也需要定时器作为外部计数。
+   24          //-------------------------------------------------------------------------------------------------------
+             -------------
+   25          void bsp_timer_count_init(TIM_counter_enum tim_n)
+   26          {
+   27   1      
+   28   1        switch(tim_n)
+   29   1        {
+   30   2          case CTIM0_P34:
+   31   2          {
+   32   3            TL0 = 0; 
+   33   3            TH0 = 0; 
+   34   3            TMOD |= 0x04; //外部计数模式
+   35   3            TR0 = 1; //启动定时器
+   36   3            break;
+   37   3          }
+   38   2          
+   39   2          case CTIM1_P35:
+   40   2          {
+   41   3            TL1 = 0x00;
+   42   3            TH1 = 0x00;
+   43   3            TMOD |= 0x40; // 外部计数模式
+   44   3            TR1 = 1; // 启动定时器
+   45   3            break;
+   46   3          }
+   47   2          
+   48   2          case CTIM2_P12:
+   49   2          {
+   50   3            T2L = 0x00;
+   51   3            T2H = 0x00;
+   52   3            AUXR |= 0x18; // 设置外部计数模式并启动定时器
+   53   3            break;
+   54   3          }
+   55   2          
+C251 COMPILER V5.60.0,  bsp_tim_counter                                                    15/05/23  16:30:08  PAGE 2   
+
+   56   2          case CTIM3_P04:
+   57   2          {
+   58   3            T3L = 0; 
+   59   3            T3H = 0;
+   60   3            T4T3M |= 0x0c; // 设置外部计数模式并启动定时器
+   61   3            break;
+   62   3          }
+   63   2          
+   64   2          case CTIM4_P06:
+   65   2          {
+   66   3            T4L = 0;
+   67   3            T4H = 0;
+   68   3            T4T3M |= 0xc0; // 设置外部计数模式并启动定时器
+   69   3            break;
+   70   3          }
+   71   2        
+   72   2        } 
+   73   1      } 
+   74          
+   75          //-------------------------------------------------------------------------------------------------------
+             -------------
+   76          //  @brief      获取计数数值
+   77          //  @param      countch     计数通道号及引脚
+   78          //  @return     uint32      返回计数值
+   79          //  Sample usage:           num = bsp_timer_count_read(CTIM0_P34);     
+   80          //-------------------------------------------------------------------------------------------------------
+             -------------
+   81          uint16 bsp_timer_count_read(TIM_counter_enum tim_n)
+   82          {
+   83   1        uint16 dat = 0;
+   84   1        
+   85   1        switch(tim_n)
+   86   1        {
+   87   2          case CTIM0_P34:
+   88   2          {
+   89   3            dat = (uint16)TH0 << 8;
+   90   3            dat = ((uint8)TL0) | dat;
+   91   3            break;
+   92   3          }
+   93   2          case CTIM1_P35:
+   94   2          {
+   95   3            dat = (uint16)TH1 << 8;
+   96   3            dat = ((uint8)TL1) | dat;
+   97   3            break;
+   98   3          }
+   99   2          case CTIM2_P12:
+  100   2          {
+  101   3            dat = (uint16)T2H << 8;
+  102   3            dat = ((uint8)T2L) | dat;
+  103   3            break;
+  104   3          }
+  105   2          case CTIM3_P04:
+  106   2          {
+  107   3            dat = (uint16)T3H << 8;
+  108   3            dat = ((uint8)T3L) | dat; 
+  109   3            break;
+  110   3          }
+  111   2          case CTIM4_P06:
+  112   2          {
+  113   3            dat = (uint16)T4H << 8;
+  114   3            dat = ((uint8)T4L) | dat;
+  115   3            break;
+  116   3          }
+  117   2          
+  118   2        }
+  119   1        return dat;
+C251 COMPILER V5.60.0,  bsp_tim_counter                                                    15/05/23  16:30:08  PAGE 3   
+
+  120   1      }
+  121          
+  122          
+  123          //-------------------------------------------------------------------------------------------------------
+             -------------
+  124          //  @brief      清除计数数值
+  125          //  @param      countch     计数通道号及引脚
+  126          //  @return     void      
+  127          //  Sample usage:           bsp_timer_count_clean(CTIM0_P34);     
+  128          //-------------------------------------------------------------------------------------------------------
+             -------------
+  129          void bsp_timer_count_clean(TIM_counter_enum tim_n)
+  130          { 
+  131   1        switch(tim_n)
+  132   1        {
+  133   2          case CTIM0_P34:
+  134   2          {
+  135   3            TR0 = 0;
+  136   3            TH0 = 0;
+  137   3            TL0 = 0;
+  138   3            TR0 = 1;
+  139   3            break;
+  140   3          }
+  141   2          case CTIM1_P35:
+  142   2          {
+  143   3            TR1 = 0;
+  144   3            TH1 = 0;
+  145   3            TL1 = 0;
+  146   3            TR1 = 1;
+  147   3            break;
+  148   3          }
+  149   2          case CTIM2_P12:
+  150   2          {
+  151   3            AUXR &= ~(1<<4);
+  152   3            T2H = 0;
+  153   3            T2L = 0;
+  154   3            AUXR |= 1<<4;
+  155   3            break;
+  156   3          }
+  157   2          case CTIM3_P04:
+  158   2          {
+  159   3            T4T3M &= ~(1<<3);
+  160   3            T3H = 0;
+  161   3            T3L = 0;
+  162   3            T4T3M |= (1<<3);
+  163   3            break;
+  164   3          }
+  165   2          case CTIM4_P06:
+  166   2          {
+  167   3            T4T3M &= ~(1<<7);
+  168   3            T4H = 0;
+  169   3            T4L = 0;
+  170   3            T4T3M |= (1<<7);
+  171   3            break;
+  172   3          }
+  173   2        }
+  174   1      }
+  175          
+  176          //-------------------------------------------------------------------------------------------------------
+             -------------
+  177          //  @brief      定时器周期中断
+  178          //  @param      tim_n      定时器通道号
+  179          //  @param      time_ms    时间(ms)
+  180          //  @return     void      
+  181          //  Sample usage:          pit_timer_ms(TIM_0, 10)
+  182          //               使用定时器0做周期中断，时间10ms一次。
+C251 COMPILER V5.60.0,  bsp_tim_counter                                                    15/05/23  16:30:08  PAGE 4   
+
+  183          //-------------------------------------------------------------------------------------------------------
+             -------------
+  184          void pit_timer_ms(TIMN_enum tim_n,float time_ms)
+  185          {
+  186   1        uint16 temp;
+  187   1        temp = (uint16)65536 - (uint16)((float)MAIN_Fosc / (12 * (1000 / time_ms)));
+  188   1        
+  189   1        if(TIM_0 == tim_n)
+  190   1        {
+  191   2          TMOD |= 0x00;   // 模式 0
+  192   2          TL0 = temp;   
+  193   2          TH0 = temp >> 8;
+  194   2          TR0 = 1;    // 启动定时器
+  195   2          ET0 = 1;    // 使能定时器中断
+  196   2        }
+  197   1        else if(TIM_1 == tim_n)
+  198   1        {
+  199   2          TMOD |= 0x00; // 模式 0
+  200   2          TL1 = temp;   
+  201   2          TH1 = temp >> 8;
+  202   2          TR1 = 1; // 启动定时器
+  203   2          ET1 = 1; // 使能定时器中断
+  204   2        }
+  205   1        else if(TIM_2 == tim_n)
+  206   1        {
+  207   2          T2L = temp;   
+  208   2          T2H = temp >> 8;
+  209   2          AUXR |= 0x10; // 启动定时器
+  210   2          IE2 |= 0x04; // 使能定时器中断
+  211   2        }
+  212   1        else if(TIM_3 == tim_n)
+  213   1        {
+  214   2          T3L = temp;   
+  215   2          T3H = temp >> 8;
+  216   2          T4T3M |= 0x08; // 启动定时器
+  217   2          IE2 |= 0x20; // 使能定时器中断
+  218   2        }
+  219   1        else if(TIM_4 == tim_n)
+  220   1        {
+  221   2          T4L = temp;   
+  222   2          T4H = temp >> 8;
+  223   2          T4T3M |= 0x80; // 启动定时器
+  224   2          IE2 |= 0x40; // 使能定时器中断
+  225   2        }
+  226   1      }
+  227          
+
+
+Module Information          Static   Overlayable
+------------------------------------------------
+  code size            =       389     ------
+  ecode size           =    ------     ------
+  data size            =    ------     ------
+  idata size           =    ------     ------
+  pdata size           =    ------     ------
+  xdata size           =    ------     ------
+  xdata-const size     =    ------     ------
+  edata size           =    ------     ------
+  bit size             =    ------     ------
+  ebit size            =    ------     ------
+  bitaddressable size  =    ------     ------
+  ebitaddressable size =    ------     ------
+  far data size        =    ------     ------
+  huge data size       =    ------     ------
+  const size           =    ------     ------
+  hconst size          =    ------     ------
+End of Module Information.
+
+C251 COMPILER V5.60.0,  bsp_tim_counter                                                    15/05/23  16:30:08  PAGE 5   
+
+
+C251 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

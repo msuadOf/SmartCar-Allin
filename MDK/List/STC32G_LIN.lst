@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_LIN                                                         13/05/23  15:57:24  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_LIN                                                         15/05/23  11:30:08  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_LIN
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_LIN.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_LIN.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\
-                    -Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_LIN.lst) TABS(2) OBJECT(.\MDK\Obj\STC32G
-                    -_LIN.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_LIN.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.
+                    -\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_LIN.lst) TABS(2) OBJECT(.\MDK\Obj\STC32
+                    -G_LIN.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    55          //========================================================================
    56          void LinReadMsg(u8 *pdat)
    57          {
-C251 COMPILER V5.60.0,  STC32G_LIN                                                         13/05/23  15:57:24  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_LIN                                                         15/05/23  11:30:08  PAGE 2   
 
    58   1        u8 i;
    59   1      
@@ -134,7 +134,7 @@ stmt  level    source
   121          // 返回: LIN总线状态.
   122          // 版本: VER1.0
   123          // 日期: 2021-01-05
-C251 COMPILER V5.60.0,  STC32G_LIN                                                         13/05/23  15:57:24  PAGE 3   
+C251 COMPILER V5.60.0,  STC32G_LIN                                                         15/05/23  11:30:08  PAGE 3   
 
   124          // 备注: 
   125          //========================================================================
@@ -202,7 +202,7 @@ stmt  level    source
   187          //========================================================================
   188          void ResponseTxCmd(void)
   189          {
-C251 COMPILER V5.60.0,  STC32G_LIN                                                         13/05/23  15:57:24  PAGE 4   
+C251 COMPILER V5.60.0,  STC32G_LIN                                                         15/05/23  11:30:08  PAGE 4   
 
   190   1        u8 lcr_val;
   191   1        lcr_val = 0x02+(LIN_MODE<<6)+(FRAME_LEN<<2);
@@ -270,7 +270,7 @@ stmt  level    source
   253          // 备注: 
   254          //========================================================================
   255          void LinSendFrame(u8 lid, u8 *pdat)
-C251 COMPILER V5.60.0,  STC32G_LIN                                                         13/05/23  15:57:24  PAGE 5   
+C251 COMPILER V5.60.0,  STC32G_LIN                                                         15/05/23  11:30:08  PAGE 5   
 
   256          {
   257   1        LinSetID(lid);            //设置总线ID
@@ -338,7 +338,7 @@ stmt  level    source
   319          void LinSetHeadDelay(u8 base_ms, u8 prescaler)
   320          {
   321   1        u16 tmp;
-C251 COMPILER V5.60.0,  STC32G_LIN                                                         13/05/23  15:57:24  PAGE 6   
+C251 COMPILER V5.60.0,  STC32G_LIN                                                         15/05/23  11:30:08  PAGE 6   
 
   322   1        tmp = (MAIN_Fosc * base_ms) / 1000;
   323   1        LinWriteReg(HDRH,(u8)(tmp>>8));

@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_CAN                                                         13/05/23  15:57:23  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_CAN                                                         15/05/23  11:30:07  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_CAN
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_CAN.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_CAN.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\
-                    -Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_CAN.lst) TABS(2) OBJECT(.\MDK\Obj\STC32G
-                    -_CAN.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_CAN.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.
+                    -\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_CAN.lst) TABS(2) OBJECT(.\MDK\Obj\STC32
+                    -G_CAN.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    55          // 函数: void CAN_Inilize(u8 CANx, CAN_InitTypeDef *CAN)
    56          // 描述: CAN 初始化程序.
    57          // 参数: CAN: 结构参数,请参考CAN.h里的定义.
-C251 COMPILER V5.60.0,  STC32G_CAN                                                         13/05/23  15:57:23  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_CAN                                                         15/05/23  11:30:07  PAGE 2   
 
    58          // 返回: none.
    59          // 版本: V1.0, 2021-06-02
@@ -134,7 +134,7 @@ stmt  level    source
   121          // 备注: 
   122          //========================================================================
   123          void CanReadFifo(CAN_DataDef *CAN)
-C251 COMPILER V5.60.0,  STC32G_CAN                                                         13/05/23  15:57:23  PAGE 3   
+C251 COMPILER V5.60.0,  STC32G_CAN                                                         15/05/23  11:30:07  PAGE 3   
 
   124          {
   125   1          u8 i;
@@ -202,7 +202,7 @@ stmt  level    source
   186          // 返回: none.
   187          // 版本: VER1.0
   188          // 日期: 2020-11-19
-C251 COMPILER V5.60.0,  STC32G_CAN                                                         13/05/23  15:57:23  PAGE 4   
+C251 COMPILER V5.60.0,  STC32G_CAN                                                         15/05/23  11:30:07  PAGE 4   
 
   189          // 备注: 
   190          //========================================================================
@@ -271,7 +271,7 @@ Module Information          Static   Overlayable
   bitaddressable size  =    ------     ------
   ebitaddressable size =    ------     ------
   far data size        =    ------     ------
-C251 COMPILER V5.60.0,  STC32G_CAN                                                         13/05/23  15:57:23  PAGE 5   
+C251 COMPILER V5.60.0,  STC32G_CAN                                                         15/05/23  11:30:07  PAGE 5   
 
   huge data size       =    ------     ------
   const size           =    ------     ------

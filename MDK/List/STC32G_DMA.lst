@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_DMA                                                         13/05/23  15:57:23  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_DMA                                                         15/05/23  11:30:07  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_DMA
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_DMA.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_DMA.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\
-                    -Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_DMA.lst) TABS(2) OBJECT(.\MDK\Obj\STC32G
-                    -_DMA.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_DMA.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.
+                    -\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_DMA.lst) TABS(2) OBJECT(.\MDK\Obj\STC32
+                    -G_DMA.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    55   1        if(DMA->DMA_DEST_Dir == M2M_ADDR_DEC)   DMA_M2M_CFG |= 0x10;  //数据写入后地址自减
    56   1        else DMA_M2M_CFG &= ~0x10;  //数据写入后地址自减
    57   1        
-C251 COMPILER V5.60.0,  STC32G_DMA                                                         13/05/23  15:57:23  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_DMA                                                         15/05/23  11:30:07  PAGE 2   
 
    58   1        if(DMA->DMA_Enable == ENABLE)   DMA_M2M_CR |= 0x80; //使能M2M DMA
    59   1        else DMA_M2M_CR &= ~0x80; //禁止M2M DMA
@@ -134,7 +134,7 @@ stmt  level    source
   120   2        }
   121   1      #endif
   122   1      #ifdef UART2
-C251 COMPILER V5.60.0,  STC32G_DMA                                                         13/05/23  15:57:23  PAGE 3   
+C251 COMPILER V5.60.0,  STC32G_DMA                                                         15/05/23  11:30:07  PAGE 3   
 
   123   1        if(UARTx == UART2)
   124   1        {
@@ -202,7 +202,7 @@ stmt  level    source
   186          // 版本: V1.0, 2021-05-17
   187          //========================================================================
   188          void DMA_LCM_Inilize(DMA_LCM_InitTypeDef *DMA)
-C251 COMPILER V5.60.0,  STC32G_DMA                                                         13/05/23  15:57:23  PAGE 4   
+C251 COMPILER V5.60.0,  STC32G_DMA                                                         15/05/23  11:30:07  PAGE 4   
 
   189          {
   190   1        DMA_LCM_STA = 0x00;

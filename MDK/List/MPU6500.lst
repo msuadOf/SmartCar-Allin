@@ -1,16 +1,16 @@
-C251 COMPILER V5.60.0,  MPU6500                                                            13/05/23  15:57:23  PAGE 1   
+C251 COMPILER V5.60.0,  MPU6500                                                            15/05/23  16:30:08  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE MPU6500
 OBJECT MODULE PLACED IN .\MDK\Obj\MPU6500.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE CORE\Src\MPU6500.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\Drive
-                    -r\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\MPU6500.lst) TABS(2) OBJECT(.\MDK\Obj\MPU6500.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE CORE\Src\MPU6500.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\Driv
+                    -er\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\MPU6500.lst) TABS(2) OBJECT(.\MDK\Obj\MPU6500.obj) 
 
 stmt  level    source
 
     1          #include <stdio.h>
     2          #include "MPU6500.h"
-*** WARNING C317 IN LINE 39 OF \stc32\SmartCar-Allin\Driver\type_def.h: attempt to redefine macro 'NULL'
+*** WARNING C317 IN LINE 39 OF \STC32\SmartCar-Allin\Driver\type_def.h: attempt to redefine macro 'NULL'
     3          /* 选择使用SPI还是I2C进行通讯捏，当果然是SPI腻 */
     4          #define MPU6500_USING_SPI
     5          // #define MPU6500_USING_I2C
@@ -66,7 +66,7 @@ stmt  level    source
    55          #ifdef MPU6500_USING_I2C
                void hal_i2c_init()
                {
-C251 COMPILER V5.60.0,  MPU6500                                                            13/05/23  15:57:23  PAGE 2   
+C251 COMPILER V5.60.0,  MPU6500                                                            15/05/23  16:30:08  PAGE 2   
 
                    I2C_soft_GPIO_Config();
                }
@@ -134,7 +134,7 @@ stmt  level    source
   119          void MPU6500_Init()
   120          {
   121   1          unsigned char reg_buffer;
-C251 COMPILER V5.60.0,  MPU6500                                                            13/05/23  15:57:23  PAGE 3   
+C251 COMPILER V5.60.0,  MPU6500                                                            15/05/23  16:30:08  PAGE 3   
 
   122   1      
   123   1          MPU6500_Peripheral_Init();
@@ -202,7 +202,7 @@ stmt  level    source
   185   1          gyro_buffer[1] = alphaGyro * gyroLast[1] + (1 - alphaGyro) * gyro_buffer[1];
   186   1          gyro_buffer[2] = alphaGyro * gyroLast[2] + (1 - alphaGyro) * gyro_buffer[2];
   187   1          gyroLast[0] = gyro_buffer[0];
-C251 COMPILER V5.60.0,  MPU6500                                                            13/05/23  15:57:23  PAGE 4   
+C251 COMPILER V5.60.0,  MPU6500                                                            15/05/23  16:30:08  PAGE 4   
 
   188   1          gyroLast[1] = gyro_buffer[1];
   189   1          gyroLast[2] = gyro_buffer[2];
@@ -270,7 +270,7 @@ stmt  level    source
   249          //        mpu6500_delay_ms(10);
   250          //    }
   251          //    for (i = 0; i < 3; i++)
-C251 COMPILER V5.60.0,  MPU6500                                                            13/05/23  15:57:23  PAGE 5   
+C251 COMPILER V5.60.0,  MPU6500                                                            15/05/23  16:30:08  PAGE 5   
 
   252          //    {
   253          //        gyroBias[i] /= 1000.0f; // 计算平均值

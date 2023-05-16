@@ -1,16 +1,16 @@
-C251 COMPILER V5.60.0,  STC32G_Timer_Isr                                                   13/05/23  15:57:26  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_Timer_Isr                                                   15/05/23  12:55:32  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_Timer_Isr
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_Timer_Isr.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Isr\STC32G_Timer_Isr.c XSMALL INTR2 BROWSE INCDIR(.\Dri
-                    -ver;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_Timer_Isr.lst) TABS(2) OBJECT(.\MD
-                    -K\Obj\STC32G_Timer_Isr.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Isr\STC32G_Timer_Isr.c XSMALL INTR2 BROWSE INCDIR(.\Dr
+                    -iver;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_Timer_Isr.lst) TABS(2) OBJECT(.\M
+                    -DK\Obj\STC32G_Timer_Isr.obj) 
 
 stmt  level    source
 
     1          #include  "STC32G_Timer.h"
-    2          
+    2          extern void Timer_ISR_Callback(int Timx);
     3          //========================================================================
     4          // 函数: Timer0_ISR_Handler
     5          // 描述: Timer0中断函数.
@@ -21,66 +21,71 @@ stmt  level    source
    10          void Timer0_ISR_Handler (void) interrupt TMR0_VECTOR    //进中断时已经清除标志
    11          {
    12   1        //Task_Marks_Handler_Callback();  //任务标记回调函数
-   13   1      }
-   14          
-   15          //========================================================================
-   16          // 函数: Timer1_ISR_Handler
-   17          // 描述: Timer1中断函数.
-   18          // 参数: none.
-   19          // 返回: none.
-   20          // 版本: V1.0, 2020-09-23
-   21          //========================================================================
-   22          void Timer1_ISR_Handler (void) interrupt TMR1_VECTOR    //进中断时已经清除标志
-   23          {
-   24   1        // TODO: 在此处添加用户代码
-   25   1        P66 = ~P66;
-   26   1      }
-   27          
-   28          //========================================================================
-   29          // 函数: Timer2_ISR_Handler
-   30          // 描述: Timer2中断函数.
-   31          // 参数: none.
-   32          // 返回: none.
-   33          // 版本: V1.0, 2020-09-23
-   34          //========================================================================
-   35          void Timer2_ISR_Handler (void) interrupt TMR2_VECTOR    //进中断时已经清除标志
-   36          {
-   37   1        // TODO: 在此处添加用户代码
-   38   1        P65 = ~P65;
-   39   1      }
-   40          
-   41          //========================================================================
-   42          // 函数: Timer3_ISR_Handler
-   43          // 描述: Timer3中断函数.
-   44          // 参数: none.
-   45          // 返回: none.
-   46          // 版本: V1.0, 2020-09-23
-   47          //========================================================================
-   48          void Timer3_ISR_Handler (void) interrupt TMR3_VECTOR    //进中断时已经清除标志
-   49          {
-   50   1        // TODO: 在此处添加用户代码
-   51   1        P64 = ~P64;
-   52   1      }
-   53          
-   54          //========================================================================
-   55          // 函数: Timer4_ISR_Handler
-   56          // 描述: Timer4中断函数.
-   57          // 参数: none.
-C251 COMPILER V5.60.0,  STC32G_Timer_Isr                                                   13/05/23  15:57:26  PAGE 2   
+   13   1        Timer_ISR_Callback(Timer0);
+   14   1      }
+   15          
+   16          //========================================================================
+   17          // 函数: Timer1_ISR_Handler
+   18          // 描述: Timer1中断函数.
+   19          // 参数: none.
+   20          // 返回: none.
+   21          // 版本: V1.0, 2020-09-23
+   22          //========================================================================
+   23          void Timer1_ISR_Handler (void) interrupt TMR1_VECTOR    //进中断时已经清除标志
+   24          {
+   25   1        // TODO: 在此处添加用户代码
+   26   1        //P66 = ~P66;
+   27   1        Timer_ISR_Callback(Timer1);
+   28   1      }
+   29          
+   30          //========================================================================
+   31          // 函数: Timer2_ISR_Handler
+   32          // 描述: Timer2中断函数.
+   33          // 参数: none.
+   34          // 返回: none.
+   35          // 版本: V1.0, 2020-09-23
+   36          //========================================================================
+   37          void Timer2_ISR_Handler (void) interrupt TMR2_VECTOR    //进中断时已经清除标志
+   38          {
+   39   1        // TODO: 在此处添加用户代码
+   40   1        //P65 = ~P65;
+   41   1        Timer_ISR_Callback(Timer2);
+   42   1      }
+   43          
+   44          //========================================================================
+   45          // 函数: Timer3_ISR_Handler
+   46          // 描述: Timer3中断函数.
+   47          // 参数: none.
+   48          // 返回: none.
+   49          // 版本: V1.0, 2020-09-23
+   50          //========================================================================
+   51          void Timer3_ISR_Handler (void) interrupt TMR3_VECTOR    //进中断时已经清除标志
+   52          {
+   53   1        // TODO: 在此处添加用户代码
+   54   1        //P64 = ~P64;
+   55   1        Timer_ISR_Callback(Timer3);
+   56   1      }
+   57          
+C251 COMPILER V5.60.0,  STC32G_Timer_Isr                                                   15/05/23  12:55:32  PAGE 2   
 
-   58          // 返回: none.
-   59          // 版本: V1.0, 2020-09-23
-   60          //========================================================================
-   61          void Timer4_ISR_Handler (void) interrupt TMR4_VECTOR    //进中断时已经清除标志
-   62          {
-   63   1        // TODO: 在此处添加用户代码
-   64   1        P63 = ~P63;
-   65   1      }
+   58          //========================================================================
+   59          // 函数: Timer4_ISR_Handler
+   60          // 描述: Timer4中断函数.
+   61          // 参数: none.
+   62          // 返回: none.
+   63          // 版本: V1.0, 2020-09-23
+   64          //========================================================================
+   65          void Timer4_ISR_Handler (void) interrupt TMR4_VECTOR    //进中断时已经清除标志
+   66          {
+   67   1        // TODO: 在此处添加用户代码
+   68   1        //P63 = ~P63;
+   69   1        Timer_ISR_Callback(Timer4);
+   70   1      }
 
 
 Module Information          Static   Overlayable
 ------------------------------------------------
-  code size            =        44     ------
+  code size            =       273     ------
   ecode size           =    ------     ------
   data size            =    ------     ------
   idata size           =    ------     ------

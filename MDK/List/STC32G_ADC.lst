@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_ADC                                                         13/05/23  15:57:23  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_ADC                                                         15/05/23  11:30:07  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_ADC
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_ADC.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_ADC.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\
-                    -Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_ADC.lst) TABS(2) OBJECT(.\MDK\Obj\STC32G
-                    -_ADC.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_ADC.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.
+                    -\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_ADC.lst) TABS(2) OBJECT(.\MDK\Obj\STC32
+                    -G_ADC.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    54          // °æ±¾: V1.0, 2012-10-22
    55          //========================================================================
    56          u16 Get_ADCResult(u8 channel) //channel = 0~15
-C251 COMPILER V5.60.0,  STC32G_ADC                                                         13/05/23  15:57:23  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_ADC                                                         15/05/23  11:30:07  PAGE 2   
 
    57          {
    58   1        u16 adc;

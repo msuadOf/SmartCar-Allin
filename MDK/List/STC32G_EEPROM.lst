@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_EEPROM                                                      13/05/23  15:57:23  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_EEPROM                                                      15/05/23  11:30:07  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_EEPROM
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_EEPROM.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_EEPROM.c XSMALL INTR2 BROWSE INCDIR(.\Driver
-                    -;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_EEPROM.lst) TABS(2) OBJECT(.\MDK\Obj\
-                    -STC32G_EEPROM.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_EEPROM.c XSMALL INTR2 BROWSE INCDIR(.\Drive
+                    -r;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_EEPROM.lst) TABS(2) OBJECT(.\MDK\Obj
+                    -\STC32G_EEPROM.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    55          // 函数: void EEPROM_read_n(u32 EE_address,u8 *DataAddress,u16 number)
    56          // 描述: 从指定EEPROM首地址读出n个字节放指定的缓冲.
    57          // 参数: EE_address:  读出EEPROM的首地址.
-C251 COMPILER V5.60.0,  STC32G_EEPROM                                                      13/05/23  15:57:23  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_EEPROM                                                      15/05/23  11:30:07  PAGE 2   
 
    58          //       DataAddress: 读出数据放缓冲的首地址.
    59          //       number:      读出的字节长度.
@@ -134,7 +134,7 @@ stmt  level    source
   121   2          EE_address++;                     //下一个地址
   122   2          DataAddress++;                    //下一个数据
   123   2        }while(--number);                   //直到结束
-C251 COMPILER V5.60.0,  STC32G_EEPROM                                                      13/05/23  15:57:23  PAGE 3   
+C251 COMPILER V5.60.0,  STC32G_EEPROM                                                      15/05/23  11:30:07  PAGE 3   
 
   124   1        DisableEEPROM();
   125   1      }

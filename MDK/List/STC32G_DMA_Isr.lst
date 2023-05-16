@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     13/05/23  15:57:25  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     15/05/23  11:30:09  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_DMA_Isr
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_DMA_Isr.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Isr\STC32G_DMA_Isr.c XSMALL INTR2 BROWSE INCDIR(.\Drive
-                    -r;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_DMA_Isr.lst) TABS(2) OBJECT(.\MDK\Ob
-                    -j\STC32G_DMA_Isr.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Isr\STC32G_DMA_Isr.c XSMALL INTR2 BROWSE INCDIR(.\Driv
+                    -er;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_DMA_Isr.lst) TABS(2) OBJECT(.\MDK\O
+                    -bj\STC32G_DMA_Isr.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    55          //========================================================================
    56          void DMA_UART1TX_ISR_Handler (void) interrupt DMA_UR1T_VECTOR
    57          {
-C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     13/05/23  15:57:25  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     15/05/23  11:30:09  PAGE 2   
 
    58   1        // TODO: 在此处添加用户代码
    59   1        if (DMA_UR1T_STA & 0x01)  //发送完成
@@ -134,7 +134,7 @@ stmt  level    source
   121          //========================================================================
   122          void DMA_UART2RX_ISR_Handler (void) interrupt DMA_UR2R_VECTOR
   123          {
-C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     13/05/23  15:57:25  PAGE 3   
+C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     15/05/23  11:30:09  PAGE 3   
 
   124   1        // TODO: 在此处添加用户代码
   125   1        if (DMA_UR2R_STA & 0x01)  //接收完成
@@ -202,7 +202,7 @@ stmt  level    source
   187          // 参数: none.
   188          // 返回: none.
   189          // 版本: V1.0, 2022-03-23
-C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     13/05/23  15:57:25  PAGE 4   
+C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     15/05/23  11:30:09  PAGE 4   
 
   190          //========================================================================
   191          void DMA_UART4TX_ISR_Handler (void) interrupt DMA_UR4T_VECTOR
@@ -270,7 +270,7 @@ stmt  level    source
   253   1        {
   254   2          DMA_SPI_STA &= ~0x02; //清标志位
   255   2        }
-C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     13/05/23  15:57:25  PAGE 5   
+C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     15/05/23  11:30:09  PAGE 5   
 
   256   1        if(DMA_SPI_STA & 0x04)  //数据覆盖
   257   1        {
@@ -338,7 +338,7 @@ stmt  level    source
   319   2      //      DMA_LCM_CR = 0;
   320   2      //    }
   321   2      //    else
-C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     13/05/23  15:57:25  PAGE 6   
+C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     15/05/23  11:30:09  PAGE 6   
 
   322   2      //    {
   323   2      //      LCM_Cnt--;
@@ -406,7 +406,7 @@ stmt  level    source
   385   1        {
   386   2          DMA_UR1R_STA &= ~0x01;  //清标志位
   387   2      //    DmaRx1Flag = 1;
-C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     13/05/23  15:57:25  PAGE 7   
+C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     15/05/23  11:30:09  PAGE 7   
 
   388   2        }
   389   1        if (DMA_UR1R_STA & 0x02)  //数据丢弃
@@ -474,7 +474,7 @@ stmt  level    source
   451   2          DMA_UR4R_STA &= ~0x02;  //清标志位
   452   2        }
   453   1      
-C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     13/05/23  15:57:25  PAGE 8   
+C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     15/05/23  11:30:09  PAGE 8   
 
   454   1        //---------- DMA SPI -------------
   455   1        if(DMA_SPI_STA & 0x01)  //通信完成
@@ -543,7 +543,7 @@ Module Information          Static   Overlayable
   xdata-const size     =    ------     ------
   edata size           =    ------     ------
   bit size             =    ------     ------
-C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     13/05/23  15:57:25  PAGE 9   
+C251 COMPILER V5.60.0,  STC32G_DMA_Isr                                                     15/05/23  11:30:09  PAGE 9   
 
   ebit size            =    ------     ------
   bitaddressable size  =    ------     ------

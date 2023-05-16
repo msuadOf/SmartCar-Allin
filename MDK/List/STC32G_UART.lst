@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_UART                                                        13/05/23  15:57:24  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_UART                                                        15/05/23  13:48:12  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_UART
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_UART.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_UART.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.
-                    -\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_UART.lst) TABS(2) OBJECT(.\MDK\Obj\STC3
-                    -2G_UART.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_UART.c XSMALL INTR2 BROWSE INCDIR(.\Driver;
+                    -.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_UART.lst) TABS(2) OBJECT(.\MDK\Obj\STC
+                    -32G_UART.obj) 
 
 stmt  level    source
 
@@ -22,7 +22,7 @@ stmt  level    source
    11          /*---------------------------------------------------------------------*/
    12          
    13          #include "STC32G_UART.h"
-   14          //#include <string.h>
+   14          #include <string.h>
    15          
    16          //========================================================================
    17          //                               本地变量声明
@@ -66,7 +66,7 @@ stmt  level    source
                  COMx = NULL;
                #endif
    57   1      
-C251 COMPILER V5.60.0,  STC32G_UART                                                        13/05/23  15:57:24  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_UART                                                        15/05/23  13:48:12  PAGE 2   
 
    58   1      #ifdef UART1
    59   1        if(UARTx == UART1)
@@ -134,7 +134,7 @@ stmt  level    source
   121   2          COM2.TX_read    = 0;
   122   2          COM2.TX_write   = 0;
   123   2          COM2.B_TX_busy  = 0;
-C251 COMPILER V5.60.0,  STC32G_UART                                                        13/05/23  15:57:24  PAGE 3   
+C251 COMPILER V5.60.0,  STC32G_UART                                                        15/05/23  13:48:12  PAGE 3   
 
   124   2          COM2.RX_Cnt     = 0;
   125   2          COM2.RX_TimeOut = 0;
@@ -202,7 +202,7 @@ stmt  level    source
   187   4              T3x12 = 1;  //Timer3 set as 1T mode
   188   4              T3R = 1;    //Timer run enable
   189   4            }
-C251 COMPILER V5.60.0,  STC32G_UART                                                        13/05/23  15:57:24  PAGE 4   
+C251 COMPILER V5.60.0,  STC32G_UART                                                        15/05/23  13:48:12  PAGE 4   
 
   190   3          }
   191   2          else  return FAIL;  //模式错误
@@ -270,7 +270,7 @@ stmt  level    source
   253   1        SBUF = dat;
   254   1        COM1.B_TX_busy = 1;   //标志忙
   255   1        while(COM1.B_TX_busy);
-C251 COMPILER V5.60.0,  STC32G_UART                                                        13/05/23  15:57:24  PAGE 5   
+C251 COMPILER V5.60.0,  STC32G_UART                                                        15/05/23  13:48:12  PAGE 5   
 
   256   1      }
   257          
@@ -338,7 +338,7 @@ stmt  level    source
   319            if(COMx->id == 3) TX3_write2buff(dat);
   320            if(COMx->id == 4) TX4_write2buff(dat);
   321          }
-C251 COMPILER V5.60.0,  STC32G_UART                                                        13/05/23  15:57:24  PAGE 6   
+C251 COMPILER V5.60.0,  STC32G_UART                                                        15/05/23  13:48:12  PAGE 6   
 
   322          
   323          void PrintString(COMx_Define *COMx, u8 *puts)

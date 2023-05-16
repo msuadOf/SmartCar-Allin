@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_USART                                                       13/05/23  15:57:25  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_USART                                                       15/05/23  11:30:08  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_USART
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_USART.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_USART.c XSMALL INTR2 BROWSE INCDIR(.\Driver;
-                    -.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_USART.lst) TABS(2) OBJECT(.\MDK\Obj\ST
-                    -C32G_USART.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_USART.c XSMALL INTR2 BROWSE INCDIR(.\Driver
+                    -;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_USART.lst) TABS(2) OBJECT(.\MDK\Obj\S
+                    -TC32G_USART.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    55          {
    56   1        u8 i;
    57   1      
-C251 COMPILER V5.60.0,  STC32G_USART                                                       13/05/23  15:57:25  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_USART                                                       15/05/23  11:30:08  PAGE 2   
 
    58   1        for(i=0;i<FRAME_LEN;i++)
    59   1        {
@@ -134,7 +134,7 @@ stmt  level    source
   121          void UsartLinSendPID(u8 USARTx, u8 id)
   122          {
   123   1        u8 P0 ;
-C251 COMPILER V5.60.0,  STC32G_USART                                                       13/05/23  15:57:25  PAGE 3   
+C251 COMPILER V5.60.0,  STC32G_USART                                                       15/05/23  11:30:08  PAGE 3   
 
   124   1        u8 P1 ;
   125   1        
@@ -202,7 +202,7 @@ stmt  level    source
   187   1        {
   188   2          USART2BRH = (u8)(tmp>>8);
   189   2          USART2BRL = (u8)tmp;
-C251 COMPILER V5.60.0,  STC32G_USART                                                       13/05/23  15:57:25  PAGE 4   
+C251 COMPILER V5.60.0,  STC32G_USART                                                       15/05/23  11:30:08  PAGE 4   
 
   190   2        }
   191   1      }
@@ -271,7 +271,7 @@ Module Information          Static   Overlayable
   pdata size           =    ------     ------
   xdata size           =    ------     ------
   xdata-const size     =    ------     ------
-C251 COMPILER V5.60.0,  STC32G_USART                                                       13/05/23  15:57:25  PAGE 5   
+C251 COMPILER V5.60.0,  STC32G_USART                                                       15/05/23  11:30:08  PAGE 5   
 
   edata size           =    ------          6
   bit size             =    ------     ------

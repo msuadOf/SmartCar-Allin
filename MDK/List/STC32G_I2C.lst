@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_I2C                                                         13/05/23  15:57:24  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_I2C                                                         15/05/23  11:30:08  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_I2C
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_I2C.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_I2C.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\
-                    -Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_I2C.lst) TABS(2) OBJECT(.\MDK\Obj\STC32G
-                    -_I2C.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_I2C.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.
+                    -\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_I2C.lst) TABS(2) OBJECT(.\MDK\Obj\STC32
+                    -G_I2C.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    55          //========================================================================
    56          u8 Get_MSBusy_Status(void)
    57          {
-C251 COMPILER V5.60.0,  STC32G_I2C                                                         13/05/23  15:57:24  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_I2C                                                         15/05/23  11:30:08  PAGE 2   
 
    58   1        return (I2CMSST & 0x80);
    59   1      }
@@ -134,7 +134,7 @@ stmt  level    source
   121          char RecvData()
   122          {
   123   1        I2CMSCR = 0x04;                         //∑¢ÀÕRECV√¸¡Ó
-C251 COMPILER V5.60.0,  STC32G_I2C                                                         13/05/23  15:57:24  PAGE 3   
+C251 COMPILER V5.60.0,  STC32G_I2C                                                         15/05/23  11:30:08  PAGE 3   
 
   124   1        Wait();
   125   1        return I2CRXD;
@@ -202,7 +202,7 @@ stmt  level    source
   187          // ∑µªÿ: none.
   188          // ∞Ê±æ: V1.0, 2020-09-15
   189          //========================================================================
-C251 COMPILER V5.60.0,  STC32G_I2C                                                         13/05/23  15:57:24  PAGE 4   
+C251 COMPILER V5.60.0,  STC32G_I2C                                                         15/05/23  11:30:08  PAGE 4   
 
   190          void I2C_WriteNbyte(u8 addr, u8 *p, u8 number)  /*  WordAddress,First Data Address,Byte lenth   */
   191          {

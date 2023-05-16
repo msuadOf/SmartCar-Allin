@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  bsp_spi_mpu6500                                                    13/05/23  15:57:26  PAGE 1   
+C251 COMPILER V5.60.0,  bsp_spi_mpu6500                                                    15/05/23  11:30:10  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE bsp_spi_mpu6500
 OBJECT MODULE PLACED IN .\MDK\Obj\bsp_spi_mpu6500.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE bsp\bsp_spi_mpu6500.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\Dr
-                    -iver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\bsp_spi_mpu6500.lst) TABS(2) OBJECT(.\MDK\Obj\bsp
-                    -_spi_mpu6500.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE bsp\bsp_spi_mpu6500.c XSMALL INTR2 BROWSE INCDIR(.\Driver;.\D
+                    -river\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\bsp_spi_mpu6500.lst) TABS(2) OBJECT(.\MDK\Obj\bs
+                    -p_spi_mpu6500.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    52          //     SPDAT = 0xff;
    53          //     while(SPIF == 0) ;
    54          //     SPIF = 1;   //清SPIF标志
-C251 COMPILER V5.60.0,  bsp_spi_mpu6500                                                    13/05/23  15:57:26  PAGE 2   
+C251 COMPILER V5.60.0,  bsp_spi_mpu6500                                                    15/05/23  11:30:10  PAGE 2   
 
    55          //     WCOL = 1;   //清WCOL标志
    56          //     return (SPDAT);
@@ -134,7 +134,7 @@ stmt  level    source
 *** WARNING C188 IN LINE 116 OF bsp\bsp_spi_mpu6500.c: 'parameter 3': value truncated
   117   1      }
 
-C251 COMPILER V5.60.0,  bsp_spi_mpu6500                                                    13/05/23  15:57:26  PAGE 3   
+C251 COMPILER V5.60.0,  bsp_spi_mpu6500                                                    15/05/23  11:30:10  PAGE 3   
 
 
 Module Information          Static   Overlayable

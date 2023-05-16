@@ -1,11 +1,11 @@
-C251 COMPILER V5.60.0,  STC32G_Clock                                                       13/05/23  15:57:23  PAGE 1   
+C251 COMPILER V5.60.0,  STC32G_Clock                                                       15/05/23  11:30:07  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_Clock
 OBJECT MODULE PLACED IN .\MDK\Obj\STC32G_Clock.obj
-COMPILER INVOKED BY: D:\Program\Keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_Clock.c XSMALL INTR2 BROWSE INCDIR(.\Driver;
-                    -.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_Clock.lst) TABS(2) OBJECT(.\MDK\Obj\ST
-                    -C32G_Clock.obj) 
+COMPILER INVOKED BY: D:\Programs\keil_v5\C251\BIN\C251.EXE Driver\Src\STC32G_Clock.c XSMALL INTR2 BROWSE INCDIR(.\Driver
+                    -;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\STC32G_Clock.lst) TABS(2) OBJECT(.\MDK\Obj\S
+                    -TC32G_Clock.obj) 
 
 stmt  level    source
 
@@ -66,7 +66,7 @@ stmt  level    source
    55   1        IRC32KCR = 0x80; //启动内部 32K IRC
    56   1        while (!(IRC32KCR & 1)); //等待时钟稳定
    57   1        CLKDIV = div;  //时钟分频
-C251 COMPILER V5.60.0,  STC32G_Clock                                                       13/05/23  15:57:23  PAGE 2   
+C251 COMPILER V5.60.0,  STC32G_Clock                                                       15/05/23  11:30:07  PAGE 2   
 
    58   1        CLKSEL = 0x03; //选择内部 32K
    59   1      }

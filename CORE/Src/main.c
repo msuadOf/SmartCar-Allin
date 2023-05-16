@@ -59,8 +59,8 @@ float gyro_buffer[3], acc_buffer[3];
 int cnt=0;
 void Timer_ISR_Callback(int Timx){
 	if(Timx==Timer4){
-		cnt=bsp_timer_count_read(CTIM3_P04);
-		bsp_timer_count_clean(CTIM3_P04);
+//		cnt=bsp_timer_count_read(CTIM3_P04);
+//		bsp_timer_count_clean(CTIM3_P04);
 	}
 }
 void main(void)
@@ -75,7 +75,7 @@ void main(void)
 	MPU6500_Init();
 	bsp_uart_init();
 
-	bsp_timer_count_init(CTIM3_P04);
+	
 	EA = 1;
     P45=0;
 	while (1)

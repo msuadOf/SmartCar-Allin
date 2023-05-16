@@ -545,9 +545,19 @@
               <FilePath>.\bsp\bsp_uart.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_tim_counter.c</FileName>
+              <FileName>bsp_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\bsp\bsp_tim_counter.c</FilePath>
+              <FilePath>.\bsp\bsp_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_pwm_motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\bsp\bsp_pwm_motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_adc_dma_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\bsp\bsp_adc_dma_timer.c</FilePath>
             </File>
           </Files>
         </Group>

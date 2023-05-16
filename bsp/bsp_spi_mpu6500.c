@@ -21,7 +21,7 @@
 #define SPI_CS_DISABLE() SPI_SS_2 = 1
 
 /****************  SPI初始化函数 *****************/
-void SPI_config(void)
+static void SPI_config(void)
 {
     SPI_InitTypeDef SPI_InitStructure;
     SPI_InitStructure.SPI_Enable = ENABLE;        // SPI启动    ENABLE, DISABLE

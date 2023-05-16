@@ -8,7 +8,7 @@
 #define DMA_Buffer_len 6
 u8 xdata DmaBuffer[DMA_Buffer_len]; // 收发共用缓存，同时使用多路串口时每个串口需分别定义缓存，以免相互干扰
 /******************** DMA 配置 ********************/
-void DMA_UART_config(void)
+static void DMA_UART_config(void)
 {
 
 	DMA_UART_InitTypeDef DMA_UART_InitStructure; // 结构定义
@@ -44,7 +44,7 @@ static void GPIO_config(void)
 	P4_MODE_IO_PU(GPIO_Pin_6 | GPIO_Pin_7); // P4.6,P4.7 设置为准双向口 - UART2
 											// P2_MODE_IO_PU(GPIO_Pin_0 | GPIO_Pin_1);
 }
-void UART_config(void)
+static void UART_config(void)
 {
 	COMx_InitDefine COMx_InitStructure; // 结构定义
 

@@ -1,27 +1,23 @@
-# Keil Template for STC32G .Lib Ver
+# STC赛道智能车
 
-Having a Happy travel with STC32!  : (
+## 引脚接线与外设使用
 
-(I do trust STC32 is the best MCU in the earth)
+| 功能                    | 外设         | 引脚                                                         | 备注                           |
+| ----------------------- | ------------ | ------------------------------------------------------------ | ------------------------------ |
+| UART调试串口            | UART2        | RX:P4.6<br />TX:P4.7                                         | 串口需要设置为准双向口         |
+| 电机1                   | PWMA_CH1     | PWMA_CH1P：P60<br />PWMA_CH1N：P61                           | 设置为推挽                     |
+| 电机2                   | PWMA_CH2     | PWMA_CH2P：P62<br />PWMA_CH2N：P63                           | 设置为推挽                     |
+| 编码器1                 | TIM0_P34     | TIM0:P34(A)<br />GPIO:P33(B)                                 |                                |
+| 编码器2                 | TIM1_P35     | TIM1:P35(A)<br />GPIO:P36(B)                                 |                                |
+| TIM+DMA+ADC定时采集中断 | TIM4+DMA+ADC |                                                              | 所有实时算法都在这个中断中实现 |
+| MPU6500通讯底层         | SPI          | NCS：P22：<br />MOSI：P23（SDA）<br />MISO：P24（ADO）<br />SCLK：P25（SCK） |                                |
+|                         |              |                                                              |                                |
+|                         |              |                                                              |                                |
+|                         |              |                                                              |                                |
+|                         |              |                                                              |                                |
+|                         |              |                                                              |                                |
+|                         |              |                                                              |                                |
 
----
 
-## How to use it
-### initialize project
-```shell
-git clone https://github.com/msuadOf/STC32-Keil-Template 01_STC32G_app
-cd 01_STC32G_app
-python projectname_init.py
-```
-or
-```shell
-git clone https://github.com/msuadOf/STC32-Keil-Template 01_STC32G_app
-python ./01_STC32G_app/projectname_init.py
-```
 
-**if you do not have python in you PC,you can do it manually**
 
-1. put your app code in `CORE/`and your lib files in `Driver/`
-2.  then open `01_GPIO.uvproj`
-3. change name of the project: the name of keil file`01_GPIO.uvproj`, `Option for Target-->Output-->Name of Executable`  and  `Manage Project Items-->Project Targets`
-4. enjoy it !

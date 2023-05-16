@@ -2,5 +2,12 @@
 *.uvgui.*
 *.uvopt
 
+*.obj
+*.__i
+*.crf
+*.htm
+*.lst
+*.map
+
 !Driver
 !CORE/*

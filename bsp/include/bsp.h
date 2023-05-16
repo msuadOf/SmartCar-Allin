@@ -21,11 +21,11 @@ void bsp_uart_init(void);
 //此枚举定义不允许用户修改
 typedef enum    // 枚举ADC通道
 {
-    TIM0_counter_P34=0,    
-	TIM1_counter_P35,    	
-	TIM2_counter_P12,     	
-	TIM3_counter_P04,
-	TIM4_counter_P06,
+    CTIM0_P34=0,    
+	CTIM1_P35,    	
+	CTIM2_P12,     	
+	CTIM3_P04,
+	CTIM4_P06,
 }TIM_counter_enum;
 
 

@@ -39,7 +39,7 @@ void DMA_UART_config(void)
 						//	DMA_UR4R_CLRFIFO();		//清空 DMA FIFO
 }
 
-void GPIO_config(void)
+static void GPIO_config(void)
 {
 	P4_MODE_IO_PU(GPIO_Pin_6 | GPIO_Pin_7); // P4.6,P4.7 设置为准双向口 - UART2
 											// P2_MODE_IO_PU(GPIO_Pin_0 | GPIO_Pin_1);

@@ -1,1 +1,0 @@
-"bsp\bsp_tim_counter.c" XSMALL INTR2 BROWSE INCDIR(.\Driver;.\Driver\Inc;.\Driver\Isr;.\CORE\Inc;.\bsp\include) DEBUG PRINT(.\MDK\List\bsp_tim_counter.lst) TABS (2) OBJECT(.\MDK\Obj\bsp_tim_counter.obj)

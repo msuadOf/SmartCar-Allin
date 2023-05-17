@@ -234,12 +234,12 @@ void bsp_encoder_init()
 }
 void bsp_encoder_read(int16* speed_l, int16* speed_r)
 {
-	*speed_l = (int16)ctimer_count_read(ENCODER_L_A);
-	*speed_r = (int16)ctimer_count_read(ENCODER_R_A);
+	*speed_l = (int16)bsp_timer_count_read(ENCODER_L_A);
+	*speed_r = (int16)bsp_timer_count_read(ENCODER_R_A);
 
 	//计数器清零
-	ctimer_count_clean(ENCODER_L_A);
-	ctimer_count_clean(ENCODER_R_A);
+	bsp_timer_count_clean(ENCODER_L_A);
+	bsp_timer_count_clean(ENCODER_R_A);
 
 	//采集方向信息
 	if(0 == ENCODER_L_B)    

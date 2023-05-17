@@ -468,9 +468,25 @@ void bsp_pwm_init(void)
 // 取值范围0~100，限幅为3~97
 void bsp_pwm_motor_left_duty_set(float duty)
 {
-	pwm_duty(PWMA_CH1P_P60, 50);
+	if (duty < 3)
+	{
+		duty = 3;
+	}
+	if (duty > 97)
+	{
+		duty = 97;
+	}
+	pwm_duty(PWMA_CH1P_P60, duty);
 }
 void bsp_pwm_motor_right_duty_set(float duty)
 {
-	pwm_duty(PWMA_CH2P_P62, 50);
+	if (duty < 3)
+	{
+		duty = 3;
+	}
+	if (duty > 97)
+	{
+		duty = 97;
+	}
+	pwm_duty(PWMA_CH2P_P62, duty);
 }

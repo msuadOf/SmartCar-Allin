@@ -41,7 +41,9 @@
 ".\MDK\Obj\bsp_uart.obj",
 ".\MDK\Obj\bsp_gpio.obj",
 ".\MDK\Obj\bsp_pwm_motor.obj",
-".\MDK\Obj\bsp_adc_dma_timer.obj" 
+".\MDK\Obj\bsp_adc_dma_timer.obj",
+".\MDK\Obj\bsp_tim_encoder.obj",
+".\MDK\Obj\bsp_uart_debug.obj" 
 TO ".\MDK\Obj\SmartCar-Allin" 
 PRINT(".\MDK\List\SmartCar-Allin.map") CASE DISABLEWARNING (16,57) 
 CLASSES (EDATA (0x0-0xFFF), 

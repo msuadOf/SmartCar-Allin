@@ -26,7 +26,7 @@
 
 #define	UART_BUF_type	edata
 
-#define	PRINTF_SELECT  UART2		//选择 printf 函数所使用的串口，参数 UART1~UART4
+#define	PRINTF_SELECT  UART1		//选择 printf 函数所使用的串口，参数 UART1~UART4
 
 #ifdef UART1
 #define	COM_TX1_Lenth	128

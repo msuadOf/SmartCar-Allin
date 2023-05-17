@@ -29,7 +29,7 @@ void bsp_uart_init(void);
 // ||
 // ||
 // ||    ===编码器计数器==== 
-// ||    以下为bsp_tim_counnter.c相关宏定义
+// ||    以下为bsp_tim_encoder.c相关宏定义
 // ||
 // ||
 //========================================
@@ -66,6 +66,9 @@ uint16 bsp_timer_count_read(TIM_counter_enum tim_n);
 
 void pit_timer_ms(TIMN_enum tim_n, float time_ms);
 
+//API
+void bsp_encoder_init();
+void bsp_encoder_read(int16* speed_l, int16* speed_r);
 //========================================
 // ||
 // ||
@@ -191,4 +194,13 @@ void bsp_adc_dma_timer_init();
 //需要在TIM4的回调中调用，用于触发ADC+DMA
 void bsp_adc_dma_timer_callback_triger(void);
 uint16 bsp_get_ADC_DMABuffer(int CHx);
+
+//========================================
+// ||
+// ||
+// ||     UART1做printf
+// ||
+// ||
+//========================================
+void bsp_uart_debug();
 #endif // !_BSP_H

@@ -127,6 +127,7 @@ void MPU6500_Init()
 
     MPU6500_Peripheral_Init();
 
+    while(MPU6500_Read_u8(MPU6500_WHO_AM_I)==0x70);//验证设备是否能用
     // /* 设置陀螺仪采样率为1KHz */
     // reg_buffer = 0x00; //分频系数为0
     // MPU6500_Write(MPU6500_SMPLRT_DIV, &reg_buffer, 1);

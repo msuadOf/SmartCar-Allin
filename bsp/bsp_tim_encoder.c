@@ -233,7 +233,7 @@ void bsp_encoder_init()
 	bsp_timer_count_init(ENCODER_R_A);
 }
 
-uint16 bsp_get_encoder(int16* speed_l, int16* speed_r)
+void bsp_get_encoder(int16* speed_l, int16* speed_r)
 {
 	*speed_l = (int16)bsp_timer_count_read(ENCODER_L_A);
 	*speed_r = (int16)bsp_timer_count_read(ENCODER_R_A);

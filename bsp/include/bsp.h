@@ -68,7 +68,7 @@ void pit_timer_ms(TIMN_enum tim_n, float time_ms);
 
 //API
 void bsp_encoder_init();
-uint16 bsp_get_encoder(int16* speed_l, int16* speed_r);
+void bsp_get_encoder(int16* speed_l, int16* speed_r);
 //========================================
 // ||
 // ||

@@ -7,6 +7,7 @@
 
 #include "MPU6500.h"
 #include "bsp.h"
+#include "car_ctrl.h"
 
 void GPIO_config(void)
 {
@@ -41,6 +42,7 @@ void main(void)
 	bsp_spi_init();
 	bsp_encoder_init();
 	bsp_uart_debug();
+	car_ctrl_init();
 
 	EA = 1;
 	P45 = 0;
@@ -60,7 +62,7 @@ void main(void)
 		
 		printf("%x\n",MPU6500_Read_u8(MPU6500_WHO_AM_I));
 		//printf("gyro:%f,%f,%f\n", gyro_buffer[0],gyro_buffer[1],gyro_buffer[2]);
-
+car_ctrl();
 		delay_ms(500);
 	}
 }

@@ -12,10 +12,9 @@ extern int16 get_angvel, goal_angvel, s_goal_speed;
 
 extern float angvel_pid_p, angvel_pid_i, angvel_pid_d, angvel_pid_out;
 extern float speed_pid_p, speed_pid_i, speed_pid_d;
+extern float speed_pid_ctrl_current;
 
 extern float turn_k1, turn_k2, turn_pid_dp, turn_pid_sp, turn_pid_dd, turn_pid_sd, turn_pid_out;
 void car_ctrl_init(void);
-void speed_pid_ctrl(void);
-void turn_pid_ctrl(void);
 void car_ctrl(void);
 #endif

@@ -2,6 +2,7 @@
 #define _MPU_6500_H
 
 #include "config.h"
+#include "bsp.h"
 
 #define MPU6500_SELF_TEST_X_GYRO 0x00
 #define MPU6500_SELF_TEST_Y_GYRO 0x01
@@ -121,6 +122,7 @@ void MPU6500_Init();
 void MPU6500_get_buffer(float *gyro_buffer, float *acc_buffer);
 void MPU6500_SelfCalibration(void);
 void MPU6500_Write_u8(unsigned char addr, unsigned char buffer);
+u8 MPU6500_Read_u8(unsigned char addr);
 
 
 #endif // !_MPU_6500_H

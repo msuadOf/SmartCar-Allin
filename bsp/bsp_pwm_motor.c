@@ -466,27 +466,26 @@ void bsp_pwm_init(void)
 }
 // 对左电机进行占空比的设置，并进行限幅
 // 取值范围0~100，限幅为3~97
-void bsp_pwm_motor_left_duty_set(float duty)
+void bsp_pwm_motor_duty_set(float duty_l, float duty_r)
 {
-	if (duty < 3)
+	if (duty_l < 3)
 	{
-		duty = 3;
+		duty_l = 3;
 	}
-	if (duty > 97)
+	if (duty_l > 97)
 	{
-		duty = 97;
+		duty_l = 97;
 	}
-	pwm_duty(PWMA_CH1P_P60, duty);
-}
-void bsp_pwm_motor_right_duty_set(float duty)
-{
-	if (duty < 3)
+
+	if (duty_r < 3)
 	{
-		duty = 3;
+		duty_r = 3;
 	}
-	if (duty > 97)
+	if (duty_r > 97)
 	{
-		duty = 97;
+		duty_r = 97;
 	}
-	pwm_duty(PWMA_CH2P_P62, duty);
+
+	pwm_duty(PWMA_CH1P_P60, duty_l);
+	pwm_duty(PWMA_CH2P_P62, duty_r);
 }

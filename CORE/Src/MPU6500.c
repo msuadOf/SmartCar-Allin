@@ -105,7 +105,12 @@ void MPU6500_Write(unsigned char addr, unsigned char *buffer, int len)
 
 void MPU6500_Write_u8(unsigned char addr, u8 buffer){
     u8 reg_buffer=buffer;
-	MPU6500_Write(MPU6500_GYRO_CONFIG,reg_buffer,1);
+	MPU6500_Write(addr,&reg_buffer,1);
+}
+u8 MPU6500_Read_u8(unsigned char addr){
+    u8 reg_buffer;
+	MPU6500_Read(addr,&reg_buffer,1);
+    return reg_buffer;
 }
 // void MPU6500_Write_u16(unsigned char addr, u16 *buffer){
 //     u8 buffer_u8[2];
@@ -134,7 +139,7 @@ void MPU6500_Init()
     reg_buffer = 0x80;
     MPU6500_Write(MPU6500_SELF_TEST_X_GYRO, &reg_buffer, 1);
     // 等待100ms，让陀螺仪完成自检
-    delay_ms(100);
+    delay_ms(40);
 
     /* 关闭陀螺仪自检 */
     reg_buffer = 0x00;
@@ -143,6 +148,9 @@ void MPU6500_Init()
     /* 打开陀螺仪和加速度计 */
     reg_buffer = 0x00;
     MPU6500_Write(MPU6500_PWR_MGMT_1, &reg_buffer, 1);
+
+        reg_buffer = MPU6500_GYRO_FS_SEL_500dps;
+    MPU6500_Write(MPU6500_GYRO_CONFIG, &reg_buffer, 1);
 }
 
 // /* 定义MPU6500六轴数据获取函数 */
@@ -178,9 +186,9 @@ void MPU6500_get_buffer(float *gyro_buffer, float *acc_buffer)
 
     /* 解析陀螺仪数据，使用互补滤波平滑数据 */
 
-    gyro_buffer[0] = (float)(((short)buf[8] << 8) | buf[9]) / 32768.0f * 250.0f;
-    gyro_buffer[1] = (float)(((short)buf[10] << 8) | buf[11]) / 32768.0f * 250.0f;
-    gyro_buffer[2] = (float)(((short)buf[12] << 8) | buf[13]) / 32768.0f * 250.0f;
+    gyro_buffer[0] = (float)(((short)buf[8] << 8) | buf[9]) / 32768.0f * 500.0f;
+    gyro_buffer[1] = (float)(((short)buf[10] << 8) | buf[11]) / 32768.0f * 500.0f;
+    gyro_buffer[2] = (float)(((short)buf[12] << 8) | buf[13]) / 32768.0f * 500.0f;
     gyro_buffer[0] = alphaGyro * gyroLast[0] + (1 - alphaGyro) * gyro_buffer[0];
     gyro_buffer[1] = alphaGyro * gyroLast[1] + (1 - alphaGyro) * gyro_buffer[1];
     gyro_buffer[2] = alphaGyro * gyroLast[2] + (1 - alphaGyro) * gyro_buffer[2];
@@ -188,17 +196,17 @@ void MPU6500_get_buffer(float *gyro_buffer, float *acc_buffer)
     gyroLast[1] = gyro_buffer[1];
     gyroLast[2] = gyro_buffer[2];
 
-    /* 解析加速度计数据，使用互补滤波平滑数据 */
+    // /* 解析加速度计数据，使用互补滤波平滑数据 */
 
-    acc_buffer[0] = (float)(((short)buf[0] << 8) | buf[1]) / 32768.0f * 2.0f;
-    acc_buffer[1] = (float)(((short)buf[2] << 8) | buf[3]) / 32768.0f * 2.0f;
-    acc_buffer[2] = (float)(((short)buf[4] << 8) | buf[5]) / 32768.0f * 2.0f;
-    acc_buffer[0] = alphaAcc * accLast[0] + (1 - alphaAcc) * acc_buffer[0];
-    acc_buffer[1] = alphaAcc * accLast[1] + (1 - alphaAcc) * acc_buffer[1];
-    acc_buffer[2] = alphaAcc * accLast[2] + (1 - alphaAcc) * acc_buffer[2];
-    accLast[0] = acc_buffer[0];
-    accLast[1] = acc_buffer[1];
-    accLast[2] = acc_buffer[2];
+    // acc_buffer[0] = (float)(((short)buf[0] << 8) | buf[1]) / 32768.0f * 2.0f;
+    // acc_buffer[1] = (float)(((short)buf[2] << 8) | buf[3]) / 32768.0f * 2.0f;
+    // acc_buffer[2] = (float)(((short)buf[4] << 8) | buf[5]) / 32768.0f * 2.0f;
+    // acc_buffer[0] = alphaAcc * accLast[0] + (1 - alphaAcc) * acc_buffer[0];
+    // acc_buffer[1] = alphaAcc * accLast[1] + (1 - alphaAcc) * acc_buffer[1];
+    // acc_buffer[2] = alphaAcc * accLast[2] + (1 - alphaAcc) * acc_buffer[2];
+    // accLast[0] = acc_buffer[0];
+    // accLast[1] = acc_buffer[1];
+    // accLast[2] = acc_buffer[2];
 }
 
 

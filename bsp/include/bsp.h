@@ -181,8 +181,8 @@ void pwm_freq(PWMCH_enum pwmch, uint32 freq, float duty);
 
 //API
 void bsp_pwm_init(void);
-void bsp_pwm_motor_left_duty_set(float duty);
-void bsp_pwm_motor_right_duty_set(float duty);
+void bsp_pwm_motor_duty_set(float duty_l,float duty_r);
+
 //========================================
 // ||
 // ||

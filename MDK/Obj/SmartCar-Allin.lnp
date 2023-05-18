@@ -1,5 +1,6 @@
 ".\MDK\Obj\main.obj",
 ".\MDK\Obj\MPU6500.obj",
+".\MDK\Obj\car_ctrl.obj",
 ".\MDK\Obj\STC32G_ADC.obj",
 ".\MDK\Obj\STC32G_CAN.obj",
 ".\MDK\Obj\STC32G_Clock.obj",

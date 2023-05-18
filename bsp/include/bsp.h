@@ -68,7 +68,7 @@ void pit_timer_ms(TIMN_enum tim_n, float time_ms);
 
 //API
 void bsp_encoder_init();
-void bsp_encoder_read(int16* speed_l, int16* speed_r);
+uint16 bsp_get_encoder(int16* speed_l, int16* speed_r);
 //========================================
 // ||
 // ||
@@ -181,7 +181,7 @@ void pwm_freq(PWMCH_enum pwmch, uint32 freq, float duty);
 
 //API
 void bsp_pwm_init(void);
-void bsp_pwm_motor_duty_set(float duty_l,float duty_r);
+void bsp_motor_control(float duty_l, float duty_r);
 
 //========================================
 // ||

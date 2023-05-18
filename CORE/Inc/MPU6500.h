@@ -123,6 +123,6 @@ void MPU6500_get_buffer(float *gyro_buffer, float *acc_buffer);
 void MPU6500_SelfCalibration(void);
 void MPU6500_Write_u8(unsigned char addr, unsigned char buffer);
 u8 MPU6500_Read_u8(unsigned char addr);
-
+void MPU6500_get_gyro_buffer(float *gyro_buffer);
 
 #endif // !_MPU_6500_H

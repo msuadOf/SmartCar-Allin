@@ -430,12 +430,23 @@ void pwm_freq(PWMCH_enum pwmch, uint32 freq, float duty)
 #define PWM4_3 0x80 // P:P6.6  N:P6.7
 #define PWM4_4 0xC0 // P:P3.4  N:P3.3
 /***************  PWM初始化函数 *****************/
-void bsp_pwm_init(void)
+
+//===========电机控制方式=============
+#define BSP_PWM_MOTOR_MODE1 // mode1为双极性控制，电机一边同时有两个pwm
+//#define BSP_PWM_MOTOR_MODE2 // mode2为单极性控制，电机一边同时只有一个pwm
+
+#define MOTORL_PWM1 PWMA_CH1P_P60
+#define MOTORL_PWM2 PWMA_CH1N_P61
+#define MOTORR_PWM1 PWMA_CH2P_P62
+#define MOTORR_PWM2 PWMA_CH2N_P63
+
+#ifdef BSP_PWM_MOTOR_MODE1
+static void bsp_pwm_init_mode1(void)
 {
-	pwm_init(PWMA_CH1P_P60, 21000, 50);
-	pwm_init(PWMA_CH1N_P61, 21000, 50);
-	pwm_init(PWMA_CH2P_P62, 21000, 50);
-	pwm_init(PWMA_CH2N_P63, 21000, 50);
+	pwm_init(MOTORL_PWM1, 21000, 50);
+	pwm_init(MOTORL_PWM2, 21000, 50);
+	pwm_init(MOTORL_PWM2, 21000, 50);
+	pwm_init(MOTORR_PWM2, 21000, 50);
 
 	// 寄存器重写
 	PWMA_DTR = 0x0C; // 设置死区时间//0.5us
@@ -461,12 +472,30 @@ void bsp_pwm_init(void)
 	//    PWMA_IER = 0x01; //使能中断
 	PWMA_CR1 |= 0x81; // 使能ARR预装载，开始计时
 
-	pwm_duty(PWMA_CH1P_P60, 50);
-	pwm_duty(PWMA_CH2P_P62, 50);
+	pwm_duty(MOTORL_PWM1, 50);
+	pwm_duty(MOTORL_PWM2, 50);
+}
+#endif // BSP_PWM_MOTOR_MODE1
+#ifdef BSP_PWM_MOTOR_MODE2
+static void bsp_pwm_init_mode2(void)
+{
+}
+#endif // BSP_PWM_MOTOR_MODE2
+
+void bsp_pwm_init(void)
+{
+#ifdef BSP_PWM_MOTOR_MODE1
+	bsp_pwm_init_mode1();
+#endif // BSP_PWM_MOTOR_MODE1
+
+#ifdef BSP_PWM_MOTOR_MODE2
+	bsp_pwm_init_mode2();
+#endif // BSP_PWM_MOTOR_MODE2
 }
 // 对左电机进行占空比的设置，并进行限幅
 // 取值范围0~100，限幅为3~97
-void bsp_pwm_motor_duty_set(float duty_l, float duty_r)
+#ifdef BSP_PWM_MOTOR_MODE1
+static void bsp_pwm_motor_duty_set_mode1(float duty_l, float duty_r)
 {
 	if (duty_l < 3)
 	{
@@ -486,6 +515,50 @@ void bsp_pwm_motor_duty_set(float duty_l, float duty_r)
 		duty_r = 97;
 	}
 
-	pwm_duty(PWMA_CH1P_P60, duty_l);
-	pwm_duty(PWMA_CH2P_P62, duty_r);
+	pwm_duty(MOTORL_PWM1, duty_l);
+	pwm_duty(MOTORL_PWM2, duty_r);
+}
+#endif // BSP_PWM_MOTOR_MODE1
+#ifdef BSP_PWM_MOTOR_MODE2
+
+#define limit(x, y) ((x) > (y) ? (y) : ((x) < -(y) ? -(y) : (x)))
+static void bsp_pwm_motor_duty_set_mode2(float duty_l, float duty_r)
+{
+	// 对占空比限幅
+	duty_l = (int)limit((float)duty_l, 97);
+	duty_r = (int)limit((float)duty_r, 97);
+
+	if (duty_l >= 0) // 左侧正转
+	{
+		pwm_duty(MOTORL_PWM1, duty_l);
+		pwm_duty(MOTORL_PWM2, 0);
+	}
+	else // 左侧反转
+	{
+		pwm_duty(MOTORL_PWM1, 0);
+		pwm_duty(MOTORL_PWM2, -duty_l);
+	}
+
+	if (duty_r >= 0) // 右侧正转
+	{
+		pwm_duty(MOTORR_PWM1, duty_r);
+		pwm_duty(MOTORR_PWM2, 0);
+	}
+	else // 右侧反转
+	{
+		pwm_duty(MOTORR_PWM1, 0);
+		pwm_duty(MOTORR_PWM2, -duty_r);
+	}
+}
+#endif // BSP_PWM_MOTOR_MODE2
+
+//motor控制函数，给值范围-100 ~ 100，正负表示正反转
+void bsp_motor_control(float duty_l, float duty_r)
+{
+#ifdef BSP_PWM_MOTOR_MODE1
+	bsp_pwm_motor_duty_set_mode1(duty_l * 2 - 100, duty_r * 2 - 100);
+#endif // BSP_PWM_MOTOR_MODE1
+#ifdef BSP_PWM_MOTOR_MODE2
+	bsp_pwm_motor_duty_set_mode2(duty_l, duty_r);
+#endif // BSP_PWM_MOTOR_MODE2
 }

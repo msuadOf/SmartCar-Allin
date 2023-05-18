@@ -334,6 +334,11 @@
               <FileType>1</FileType>
               <FilePath>.\CORE\Src\MPU6500.c</FilePath>
             </File>
+            <File>
+              <FileName>car_ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\CORE\Src\car_ctrl.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -574,20 +579,5 @@
       </Groups>
     </Target>
   </Targets>
-
-  <LayerInfo>
-    <Layers>
-      <Layer>
-        <LayName>&lt;Project Info&gt;</LayName>
-        <LayDesc></LayDesc>
-        <LayUrl></LayUrl>
-        <LayKeys></LayKeys>
-        <LayCat></LayCat>
-        <LayLic></LayLic>
-        <LayTarg>0</LayTarg>
-        <LayPrjMark>1</LayPrjMark>
-      </Layer>
-    </Layers>
-  </LayerInfo>
 
 </Project>

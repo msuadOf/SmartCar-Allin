@@ -15,7 +15,7 @@ void GPIO_config(void)
 	// P4_MODE_IN_HIZ(GPIO_Pin_All);
 }
 
-float gyro_buffer[3], acc_buffer[3];
+
 int cnt = 0;
 void Timer_ISR_Callback(int Timx)
 {
@@ -56,7 +56,7 @@ void main(void)
 		/* ´òÓ¡Êý¾Ý */
 		GPIO_TogglePin(P45);
 		 //putchar('A');
-		bsp_pwm_motor_duty_set(10.0f,30.0f);
+
 		
 		printf("%x\n",MPU6500_Read_u8(MPU6500_WHO_AM_I));
 		//printf("gyro:%f,%f,%f\n", gyro_buffer[0],gyro_buffer[1],gyro_buffer[2]);

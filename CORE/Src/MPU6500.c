@@ -101,15 +101,15 @@ void MPU6500_Write(unsigned char addr, unsigned char *buffer, int len)
  * *******************************************
  * */
 
-
-
-void MPU6500_Write_u8(unsigned char addr, u8 buffer){
-    u8 reg_buffer=buffer;
-	MPU6500_Write(addr,&reg_buffer,1);
+void MPU6500_Write_u8(unsigned char addr, u8 buffer)
+{
+    u8 reg_buffer = buffer;
+    MPU6500_Write(addr, &reg_buffer, 1);
 }
-u8 MPU6500_Read_u8(unsigned char addr){
+u8 MPU6500_Read_u8(unsigned char addr)
+{
     u8 reg_buffer;
-	MPU6500_Read(addr,&reg_buffer,1);
+    MPU6500_Read(addr, &reg_buffer, 1);
     return reg_buffer;
 }
 // void MPU6500_Write_u16(unsigned char addr, u16 *buffer){
@@ -127,7 +127,8 @@ void MPU6500_Init()
 
     MPU6500_Peripheral_Init();
 
-    while(MPU6500_Read_u8(MPU6500_WHO_AM_I)==0x70);//验证设备是否能用
+    while (MPU6500_Read_u8(MPU6500_WHO_AM_I) == 0x70)
+        ; // 验证设备是否能用
     // /* 设置陀螺仪采样率为1KHz */
     // reg_buffer = 0x00; //分频系数为0
     // MPU6500_Write(MPU6500_SMPLRT_DIV, &reg_buffer, 1);
@@ -150,7 +151,7 @@ void MPU6500_Init()
     reg_buffer = 0x00;
     MPU6500_Write(MPU6500_PWR_MGMT_1, &reg_buffer, 1);
 
-        reg_buffer = MPU6500_GYRO_FS_SEL_500dps;
+    reg_buffer = MPU6500_GYRO_FS_SEL_500dps;
     MPU6500_Write(MPU6500_GYRO_CONFIG, &reg_buffer, 1);
 }
 
@@ -172,15 +173,38 @@ void MPU6500_Init()
 //     acc_buffer[1] = (float)(((short)buf[2] << 8) | buf[3]) / 32768.0f * 2.0f;
 //     acc_buffer[2] = (float)(((short)buf[4] << 8) | buf[5]) / 32768.0f * 2.0f;
 // }
+void MPU6500_get_gyro_buffer(float *gyro_buffer)
+{
+    static float gyroLast[3] = {0, 0, 0}; // 上一次的陀螺仪数据
+    static float accLast[3] = {0, 0, 0};  // 上一次的加速度计数据
 
+    unsigned char buf[14];
+    float alphaGyro = 0.5f; // 陀螺仪数据的滤波系数
+    float alphaAcc = 0.5f;  // 加速度计数据的滤波系数
+
+    /* 读取陀螺仪和加速度计数据 */
+    MPU6500_Read(MPU6500_GYRO_XOUT_H, buf, (3) * 2); // 3个gyro轴数据+1个temp数据+3个acc数据
+
+    /* 解析陀螺仪数据，使用互补滤波平滑数据 */
+
+    gyro_buffer[0] = (float)(((short)buf[0] << 8) | buf[1]) / 32768.0f * 500.0f;
+    gyro_buffer[1] = (float)(((short)buf[2] << 8) | buf[3]) / 32768.0f * 500.0f;
+    gyro_buffer[2] = (float)(((short)buf[4] << 8) | buf[5]) / 32768.0f * 500.0f;
+    gyro_buffer[0] = alphaGyro * gyroLast[0] + (1 - alphaGyro) * gyro_buffer[0];
+    gyro_buffer[1] = alphaGyro * gyroLast[1] + (1 - alphaGyro) * gyro_buffer[1];
+    gyro_buffer[2] = alphaGyro * gyroLast[2] + (1 - alphaGyro) * gyro_buffer[2];
+    gyroLast[0] = gyro_buffer[0];
+    gyroLast[1] = gyro_buffer[1];
+    gyroLast[2] = gyro_buffer[2];
+}
 void MPU6500_get_buffer(float *gyro_buffer, float *acc_buffer)
 {
     static float gyroLast[3] = {0, 0, 0}; // 上一次的陀螺仪数据
-    static float accLast[3] = {0, 0, 0}; // 上一次的加速度计数据
+    static float accLast[3] = {0, 0, 0};  // 上一次的加速度计数据
 
     unsigned char buf[14];
-		    float alphaGyro = 0.5f; // 陀螺仪数据的滤波系数
-		    float alphaAcc = 0.5f; // 加速度计数据的滤波系数
+    float alphaGyro = 0.5f; // 陀螺仪数据的滤波系数
+    float alphaAcc = 0.5f;  // 加速度计数据的滤波系数
 
     /* 读取陀螺仪和加速度计数据 */
     MPU6500_Read(MPU6500_ACCEL_XOUT_H, buf, (3 + 1 + 3) * 2); // 3个gyro轴数据+1个temp数据+3个acc数据
@@ -210,7 +234,6 @@ void MPU6500_get_buffer(float *gyro_buffer, float *acc_buffer)
     // accLast[2] = acc_buffer[2];
 }
 
-
 // int main()
 // {
 //     float gyro_buffer[3], acc_buffer[3];
@@ -233,14 +256,14 @@ void MPU6500_get_buffer(float *gyro_buffer, float *acc_buffer)
 //     return 0;
 // }
 
-//void MPU6500_SelfCalibration(void)
+// void MPU6500_SelfCalibration(void)
 //{
-//    unsigned char buffer;
-//    unsigned char rawData[6];      // 原始传感器数据
-//    float gyroBias[3] = {0, 0, 0}; // 陀螺仪偏置
-//    int i, j;
-//    // 加速度计自校准
-//    float accelBias[3] = {0, 0, 0}; // 加速度计偏置
+//     unsigned char buffer;
+//     unsigned char rawData[6];      // 原始传感器数据
+//     float gyroBias[3] = {0, 0, 0}; // 陀螺仪偏置
+//     int i, j;
+//     // 加速度计自校准
+//     float accelBias[3] = {0, 0, 0}; // 加速度计偏置
 
 //    // 温度稳定化
 //    buffer = 0x40;
@@ -286,6 +309,6 @@ void MPU6500_get_buffer(float *gyro_buffer, float *acc_buffer)
 //    MPU6500_Write(0x0A, (unsigned char *)&accelBias[2], 2); // 将加速度计Z轴的偏置写入MPU6500芯片的ACCEL_Z_OFFS_H和ACCEL_Z_OFFS_L寄存器中
 //}
 
-//void MPU6500_GYRO_CONFIG(){
-//    MPU6500_Write_u8(MPU6500_GYRO_CONFIG,MPU6500_GYRO_FS_SEL_250dps);
-//}
+// void MPU6500_GYRO_CONFIG(){
+//     MPU6500_Write_u8(MPU6500_GYRO_CONFIG,MPU6500_GYRO_FS_SEL_250dps);
+// }
